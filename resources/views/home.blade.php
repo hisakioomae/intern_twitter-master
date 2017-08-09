@@ -11,10 +11,10 @@
 
                 <div class="card-title my-2">
                     <a href="#" class="font-weight-bold text-inherit d-block">
-                        snicmakino hello<!-- TODO: データベースから取得したログインルーザを表示 -->
+                        {{$user['url_name']}}<!-- TODO: データベースから取得したログインルーザを表示 -->
                     </a>
                     <a href="#" class="text-inherit">
-                        &#64;snicmakino こんに<!-- TODO: データベースから取得したアカウント名を表示 -->
+                        &#64;snicmakino こんにち<!-- TODO: データベースから取得したアカウント名を表示 -->
                     </a>
                 </div>
 
