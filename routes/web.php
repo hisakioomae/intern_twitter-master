@@ -19,6 +19,7 @@ Auth::routes();
 
 Route::middleware(['auth'])->group(function () {
     Route::get('home', 'HomeController@index')->name('home');
+    Route::post('home', 'HomeController@tweet');
 });
 
 
@@ -28,3 +29,5 @@ Route::get('search', 'MockController@search');
 Route::get('user', 'MockController@user');
 Route::get('following', 'MockController@following');
 Route::get('followers', 'MockController@followers');
+
+

@@ -41,10 +41,10 @@
     <div class="col-lg-6">
         <ul class="list-group media-list-stream mb-4">
             <li class="media list-group-item p-4 {{ $errors->has('body') ? 'has-danger' : '' }}">
-                <form method="POST" action="#" class="input-group">
+                <form method="POST" action="{{ route('home') }}" class="input-group"><!-- TODO: 入力ボックスの情報をデータベースへ登録する -->
                     {{ csrf_field() }}
 
-                    <input name="body" type="text" class="form-control" placeholder="いまどうしてる？"><!--ツイートの入力ボックス-->
+                    <input name="body" type="text" class="form-control" placeholder="いまどうしてる？">
                     <div class="input-group-btn">
                         <button type="submit" class="btn btn-secondary">
                             <span class="icon icon-new-message"></span>
@@ -58,7 +58,7 @@
                     </div>
                 @endif
             </li>
-            @include('fragments.tweet')
+            @each('fragments.tweet',$tweets,'tweet')
         </ul>
     </div>
 
