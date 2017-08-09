@@ -15,7 +15,7 @@ class HomeController extends Controller
         /** 認証済みユーザ情報の取得 */
         $loginUser = \Auth::user();
         $userInfo = User::find($loginUser['id']);
-        return view('home',['user' => $userInfo]);
+        return view('home', ['userInfo' => $userInfo]);
 
     }
 

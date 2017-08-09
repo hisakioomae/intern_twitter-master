@@ -11,14 +11,14 @@
 
                 <div class="card-title my-2">
                     <a href="#" class="font-weight-bold text-inherit d-block">
-                        {{$user['display_name']}}
+                        {{$userInfo['display_name']}}
                     </a>
                     <a href="#" class="text-inherit">
-                        &#64;{{$user['display_name']}}
+                        &#64;{{$userInfo['display_name']}}
                     </a>
                 </div>
 
-                <p class="mb-4">Software engineer（JavaとかDBとかAWSとか)<!-- TODO: データベースから取得したコメントを表示 --></p>
+                <p class="mb-4">説明を追加{{$userInfo['description']}}</p>
 
                 <ul class="card-profile-stats">
                     <li class="card-profile-stat">
