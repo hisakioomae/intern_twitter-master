@@ -11,10 +11,10 @@
 
                 <div class="card-title my-2">
                     <a href="#" class="font-weight-bold text-inherit d-block">
-                        {{$user['url_name']}}
+                        {{$user['display_name']}}
                     </a>
                     <a href="#" class="text-inherit">
-                        &#64;snicmakino こんにち<!-- TODO: データベースから取得したアカウント名を表示 -->
+                        &#64;{{$user['display_name']}}
                     </a>
                 </div>
 

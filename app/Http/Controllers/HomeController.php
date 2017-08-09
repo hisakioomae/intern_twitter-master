@@ -11,9 +11,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $user = User::find(1);
-        //dd($user);
-        return view('home',['user' => $user]);
+
+        /** 認証済みユーザ情報の取得 */
+        $loginUser = \Auth::user();
+        $userInfo = User::find($loginUser['id']);
+        return view('home',['user' => $userInfo]);
 
     }
 
