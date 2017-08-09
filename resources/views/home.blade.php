@@ -11,7 +11,7 @@
 
                 <div class="card-title my-2">
                     <a href="#" class="font-weight-bold text-inherit d-block">
-                        {{$user['url_name']}}<!-- TODO: データベースから取得したログインルーザを表示 -->
+                        {{$user['url_name']}}
                     </a>
                     <a href="#" class="text-inherit">
                         &#64;snicmakino こんにち<!-- TODO: データベースから取得したアカウント名を表示 -->
