@@ -11,26 +11,26 @@
 
                 <div class="card-title my-2">
                     <a href="#" class="font-weight-bold text-inherit d-block">
-                        snicmakino
+                        snicmakino hello<!-- TODO: データベースから取得したログインルーザを表示 -->
                     </a>
                     <a href="#" class="text-inherit">
-                        &#64;snicmakino
+                        &#64;snicmakino こんに<!-- TODO: データベースから取得したアカウント名を表示 -->
                     </a>
                 </div>
 
-                <p class="mb-4">Software engineer（JavaとかDBとかAWSとか） 空前絶後のKotlinブーム中</p>
+                <p class="mb-4">Software engineer（JavaとかDBとかAWSとか)<!-- TODO: データベースから取得したコメントを表示 --></p>
 
                 <ul class="card-profile-stats">
                     <li class="card-profile-stat">
                         <a href="#" class="text-inherit">
                             フォロー
-                            <strong class="d-block">30</strong>
+                            <strong class="d-block">30<!--TODO: フォロー数を数えて表示--></strong>
                         </a>
                     </li>
                     <li class="card-profile-stat">
                         <a href="#" class="text-inherit">
                             フォロワー
-                            <strong class="d-block">7</strong>
+                            <strong class="d-block">7<!--TODO: フォロワー数を数えて表示--></strong>
                         </a>
                     </li>
                 </ul>
@@ -44,7 +44,7 @@
                 <form method="POST" action="#" class="input-group">
                     {{ csrf_field() }}
 
-                    <input name="body" type="text" class="form-control" placeholder="いまどうしてる？">
+                    <input name="body" type="text" class="form-control" placeholder="いまどうしてる？"><!--ツイートの入力ボックス-->
                     <div class="input-group-btn">
                         <button type="submit" class="btn btn-secondary">
                             <span class="icon icon-new-message"></span>
