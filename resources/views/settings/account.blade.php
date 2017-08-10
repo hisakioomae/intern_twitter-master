@@ -23,7 +23,7 @@
                         <label for="url_name" class="col-4 col-form-label">ユーザー名</label>
                         <div class="col-8">
                             <input name="url_name" type="text" maxlength="15" id="url_name" class="form-control"
-                                   value="snicmakino">
+                                   value="{{$users->url_name}}"><!--TODO: ユーザ情報を貼り付け-->
 
                             @if ($errors->has('url_name'))
                                 <div class="form-control-feedback">
@@ -36,7 +36,7 @@
                         <label for="email" class="col-4 col-form-label">メールアドレス</label>
                         <div class="col-8">
                             <input name="email" type="email" id="email" class="form-control"
-                                   value="makino@asia-quest.jp">
+                                   value="{{$users->email}}"><!--TODO: メールアドレス情報を貼り付け-->
 
                             @if ($errors->has('email'))
                                 <div class="form-control-feedback">

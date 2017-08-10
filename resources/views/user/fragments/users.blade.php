@@ -3,8 +3,8 @@
         <div class="card card-profile mb-4">
             <div class="card-header bg-danger"></div>
             <div class="card-block">
-                <a href="#">
-                    <img class="avatar card-profile-img" src="{{ asset('images/no-thumb.png') }}">
+                <a href="{{ route('following') }}">
+                    <img class="avatar card-profile-img" src="{{asset($following->avatar)}}">
                 </a>
 
                 <span class="float-right">
@@ -12,11 +12,11 @@
                 </span>
 
                 <strong class="card-title d-block">
-                    <a class="text-inherit" href="#">snicmakino</a>
+                    <a class="text-inherit" href="{{ route('following') }}">{{$following->display_name}}</a>
                 </strong>
 
                 <p class="mb-4">
-                    Software engineer（JavaとかDBとかAWSとか） 空前絶後のKotlinブーム中
+                    {{$following->description}}
                 </p>
             </div>
         </div>

@@ -10,7 +10,7 @@
     </div>
 
     <div class="col-lg-9">
-        @include('user.fragments.users')
+        @each('user.fragments.users',$following,'following')
 
         <div class="hidden-lg-up">
             @include('fragments.footer')

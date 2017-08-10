@@ -23,11 +23,21 @@ Route::middleware(['auth'])->group(function () {
 });
 
 
-Route::get('account', 'MockController@account');
-Route::get('profile', 'MockController@profile');
-Route::get('search', 'MockController@search');
-Route::get('user', 'MockController@user');
-Route::get('following', 'MockController@following');
-Route::get('followers', 'MockController@followers');
+Route::get('account', 'AccountController@account')->name('account');
+Route::put('account', 'AccountController@update')->name('account');
+
+Route::get('profile', 'UserController@profile')->name('profile');
+Route::put('profile', 'UserController@update');
+
+
+Route::get('search', 'MockController@search')->name('search');
+
+Route::get('user', 'MockController@user')->name('user');
+
+Route::get('following', 'FollowingController@following')->name('following');
+//Route::get('following/{user}', 'FollowingController@following')->name('following.user');
+
+
+Route::get('followers', 'MockController@followers')->name('followers');
 
 
