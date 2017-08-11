@@ -19,12 +19,18 @@ class HomeController extends Controller
         $loginUser = \Auth::user();
         $userInfo = User::find($loginUser['id']);// エロケントでDB操作
 
-        /**  ツイート全件取得 */ //TODO: 冗長な処理(関数化)
+        /**  ツイート全件取得 */ //TODO: フォローしている人だけ
         $tweets = DB::table('users')
             ->orderBy('tweets.id','desc')
+            ->where('follow.followee_id', '=', $loginUser['id'])
+            ->orWhere('users.id','=', $loginUser['id'])
             ->select('body','display_name','tweets.created_at','users.avatar')
-            ->leftJoin('tweets','users.id','=','user_id')
-            ->get();
+            ->Join('tweets','users.id','=','user_id')
+            ->LeftJoin('follow', 'users.id', '=', 'follow.follower_id')
+            ->toSql();
+//            ->get();
+
+        dd($tweets);
 
         /**  フォロー数の取得 */
         $following_num = DB::table('users')
@@ -58,7 +64,7 @@ class HomeController extends Controller
         /**  POSTした内容をすべて取得 */
         $postInfo = Request::all();
         /** PHPのコマンドで現在時刻を取得 */
-        $nowTime = Carbon::now();
+        $nowTime = Carbon::now('Asia/Tokyo');
 
         /** 認証済みユーザ情報の取得 */
         $loginUser = \Auth::user();
@@ -71,16 +77,35 @@ class HomeController extends Controller
                 'created_at' => $nowTime]
         );
 
-        /**  ツイート全件取得 */
+        /**  ツイート全件取得 */ //TODO: フォローしている人だけ
         $tweets = DB::table('users')
             ->orderBy('tweets.id','desc')
+            ->where('follow.followee_id', '=', $loginUser['id'])
+            ->orWhere('tweets.user_id','=', $loginUser['id'])
             ->select('body','display_name','tweets.created_at','users.avatar')
-            ->leftJoin('tweets','users.id','=','user_id')
+            ->LeftJoin('tweets','users.id','=','user_id')
+            ->LeftJoin('follow', 'users.id', '=', 'follow.follower_id')
             ->get();
+
+        /**  フォロー数の取得 */
+        $following_num = DB::table('users')
+            ->select('*')
+            ->where('follow.followee_id', '=', $loginUser['id'])
+            ->Join('follow', 'users.id', '=', 'follow.follower_id')
+            ->count();
+
+        /**  フォロワー数の取得 */
+        $follower_num = DB::table('users')
+            ->select('*')
+            ->where('follow.follower_id', '=', $loginUser['id'])
+            ->Join('follow', 'users.id', '=', 'follow.followee_id')
+            ->count();
 
         return view('home')->with([
             "users" => $userInfo,
-            "tweets" => $tweets
+            "tweets" => $tweets,
+            "following_num" => $following_num,
+            "follower_num" => $follower_num
         ]);
 
     }

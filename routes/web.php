@@ -19,7 +19,7 @@ Auth::routes();
 
 Route::middleware(['auth'])->group(function () {
     Route::get('home', 'HomeController@index')->name('home');
-    Route::post('home', 'HomeController@tweet');
+    Route::post('home', 'HomeController@tweet')->name('home.tweet');
 });
 
 
