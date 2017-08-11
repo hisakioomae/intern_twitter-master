@@ -27,10 +27,9 @@ class HomeController extends Controller
             ->select('body','display_name','tweets.created_at','users.avatar')
             ->Join('tweets','users.id','=','user_id')
             ->LeftJoin('follow', 'users.id', '=', 'follow.follower_id')
-            ->toSql();
-//            ->get();
+            ->get();
 
-        dd($tweets);
+        //dd($tweets);
 
         /**  フォロー数の取得 */
         $following_num = DB::table('users')
