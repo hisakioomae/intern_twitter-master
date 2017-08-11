@@ -35,7 +35,7 @@ Route::get('search', 'MockController@search')->name('search');
 Route::get('user', 'MockController@user')->name('user');
 
 Route::get('following', 'FollowingController@following')->name('following');
-//Route::get('following/{user}', 'FollowingController@following')->name('following.user');
+Route::get('following/{users}', 'FollowingController@following')->name('following.user');
 
 
 Route::get('followers', 'MockController@followers')->name('followers');

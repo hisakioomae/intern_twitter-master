@@ -26,9 +26,26 @@ class HomeController extends Controller
             ->leftJoin('tweets','users.id','=','user_id')
             ->get();
 
+        /**  フォロー数の取得 */
+        $following_num = DB::table('users')
+            ->select('*')
+            ->where('follow.followee_id', '=', $loginUser['id'])
+            ->Join('follow', 'users.id', '=', 'follow.follower_id')
+            ->count();
+
+        /**  フォロワー数の取得 */
+        $follower_num = DB::table('users')
+            ->select('*')
+            ->where('follow.follower_id', '=', $loginUser['id'])
+            ->Join('follow', 'users.id', '=', 'follow.followee_id')
+            ->count();
+
+
         return view('home')->with([
             "users" => $userInfo,
-            "tweets" => $tweets
+            "tweets" => $tweets,
+            "following_num" => $following_num,
+            "follower_num" => $follower_num
         ]);
 
     }
@@ -60,7 +77,6 @@ class HomeController extends Controller
             ->select('body','display_name','tweets.created_at','users.avatar')
             ->leftJoin('tweets','users.id','=','user_id')
             ->get();
-
 
         return view('home')->with([
             "users" => $userInfo,

@@ -22,15 +22,15 @@
 
                 <ul class="card-profile-stats">
                     <li class="card-profile-stat">
-                        <a href="{{ route('following') }}" class="text-inherit">
+                        <a href="{{ route('following.user', [$users]) }}" class="text-inherit">
                             フォロー
-                            <strong class="d-block">30<!--TODO: フォロー数を数えて表示--></strong>
+                            <strong class="d-block">{{$following_num}}</strong>
                         </a>
                     </li>
                     <li class="card-profile-stat">
                         <a href="{{ route('followers') }}" class="text-inherit">
                             フォロワー
-                            <strong class="d-block">7<!--TODO: フォロワー数を数えて表示--></strong>
+                            <strong class="d-block">{{$follower_num}}</strong>
                         </a>
                     </li>
                 </ul>

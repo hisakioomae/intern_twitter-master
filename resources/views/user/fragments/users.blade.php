@@ -3,7 +3,7 @@
         <div class="card card-profile mb-4">
             <div class="card-header bg-danger"></div>
             <div class="card-block">
-                <a href="{{ route('following') }}">
+                <a href="{{ route('following.user', [$following->id]) }}">
                     <img class="avatar card-profile-img" src="{{asset($following->avatar)}}">
                 </a>
 
@@ -12,7 +12,7 @@
                 </span>
 
                 <strong class="card-title d-block">
-                    <a class="text-inherit" href="{{ route('following') }}">{{$following->display_name}}</a>
+                    <a class="text-inherit" href="{{ route('following.user', [$following->id]) }}">{{$following->display_name}}</a>
                 </strong>
 
                 <p class="mb-4">
